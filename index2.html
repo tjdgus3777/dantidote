@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One:ital@1&family=Black+And+White+Picture&family=Cinzel&family=Edu+TAS+Beginner&family=Estonia&family=Federo&family=Julius+Sans+One&family=Nixie+One&family=Rye&family=Timmana&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One:ital@1&family=Black+And+White+Picture&family=Cinzel&family=Dancing+Script:wght@700&family=Lobster&family=Rubik+Dirt&family=Ultra&display=swap" rel="stylesheet">
+
+
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                sc = $(window).scrollTop()
+                $('#scroll').html(sc)
+                if( sc > 600 ){
+                    $('#sub_box1').animate({'left':'0'},900)
+                    $('#sub_box2').animate({'left':'60%'},900)
+                    $('#sub_box3').animate({'left':'0'},900)
+                    $('#sub_box4').animate({'left':'60%'},900)
+                }
+                if( sc > 900 ){
+                    $('#slide').stop().animate({'opacity':'1'},2000)
+                    $('#next_bt').stop().animate({'opacity':'1'},2000)
+                    $('#prev_bt').stop().animate({'opacity':'1'},2000)
+                    $('#slide_won').stop().animate({'opacity':'1'},2000)
+                }
+                if( sc > 1900 ){
+                    $('#runway_box').css({'transform':'rotate(0deg)'})
+                    $('#runway_box2').css({'transform':'rotate(0deg)'})
+                    $('#runway_text').delay(200).fadeIn(3300)
+                    $('#runway_text1').delay(800).fadeIn(4000)
+                    $('#runway_text2').delay(1600).fadeIn(4000)
+                    $('#runway_bt').delay(1600).fadeIn(4000)
+
+                }
+
+                
+            })
+
+        
+
+            slide_num = 0;
+            $('#next_bt').click(function(){
+                slide_num = slide_num - 1146;
+                if( slide_num <= -10314){ slide_num = -10314}
+                $('#slide').stop().animate({'left':slide_num},600)
+                $ ("#slide_won>li").eq(slide_num/-1146).css({'background-color':'#000'}).siblings().css({'background-color':'#fff'})
+            })
+            $('#prev_bt').click(function(){
+                slide_num = slide_num + 1146;
+                if( slide_num > 0){ slide_num = 0}
+                $('#slide').stop().animate({'left':slide_num},600)
+                $ ("#slide_won>li").eq(slide_num/-1146).css({'background-color':'#000'}).siblings().css({'background-color':'#fff'})
+            })
+            $('#slide_won>li').click(function(){
+                $(this).css({'background-color':'#000'}).siblings().css({'background-color':'#fff'})
+
+
+                slide_num =$(this).index() * -1146
+                $("#slide").stop().animate({left: slide_num},600)
+            })
+
+
+
+
+
+                
+
+
+            
+            $('#main_box1').delay(2000).animate({'right':'0'},1000,function(){
+                $('#main_icon').fadeIn(30)
+            })
+            $('#main_text').delay(2500).animate({'right':'120px'},1000,function(){
+                $('#sc').fadeIn(30)
+                $('#main_logo').fadeIn(30)
+                
+            })
+            $('#sns').delay(3000).animate({'right':'-130px'},1000,function(){
+                $('#sc_text').fadeIn(150)
+            })
+            
+
+            setInterval(function(){
+                $('#sc').css({'bottom':'110px','opacity':'1'})
+                $('#sc').animate({'bottom':'90px','opacity':'0'},1100)                
+            },1150)
+
+        $('#main_icon').click(function(){
+
+                $('#menu_box1').animate({'top':'1000px'},600)
+                $('#menu_box2').delay(200).animate({'top':'1000px'},600)
+                $('#menu_box3').delay(300).animate({'top':'1000px'},600)
+                $('#close_icon').delay(300).animate({'top':'1040px'},600)
+                $('#menu_logo').animate({'top':'1000px'})
+
+        })
+
+        $('#close_icon').click(function(){
+
+                $('#menu_box1').animate({'top':'-1000px'},600)
+                $('#menu_box2').delay(200).animate({'top':'-1000px'},600)
+                $('#menu_box3').delay(300).animate({'top':'-1000px'},600)
+                $('#close_icon').delay(300).animate({'top':'-1040px'},600)
+                $('#menu_logo').animate({'top':'-1000px'})
+
+        })
+        
+        //////////////////       runway        ///////////////////////////////
+
+        setInterval(function(){
+                $('#runway_right_icon').css({'right':'20px'})
+                $('#runway_left_icon').css({'left':'20px'})
+                $('#runway_right_icon').stop().animate({'right':'0'},800)
+                $('#runway_left_icon').stop().animate({'left':'0'},800)                
+            },1000)
+
+            runway_toggle = 0
+            $('#runway_bt').click(function(){
+                if( runway_toggle==0){
+                runway_toggle=1
+                $('#runway_box').animate({'left':'-30%'},800)
+                $('#runway_box2').animate({'right':'-38%'},800)
+                $('#runway_right_icon').css({'transform':'rotate(180deg)'})
+                $('#runway_left_icon').css({'transform':'rotate(0deg)'})
+                }
+                else if( runway_toggle==1){
+                runway_toggle=0
+                $('#runway_box').animate({'left':'0'},800)
+                $('#runway_box2').animate({'right':'0'},800)
+                $('#runway_right_icon').css({'transform':'rotate(0deg)'})
+                $('#runway_left_icon').css({'transform':'rotate(180deg)'})
+                }
+            })
+
+        })
+    </script>
+    <style>
+        * { margin: 0; padding: 0; list-style: none; }
+        a { color: inherit; text-decoration: none;}
+        body,html { height: 100%; }
+        /* main */
+        #main_wrap { width: 100%; height: 1000px; position: relative; overflow: hidden;}
+        #main_vd { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; margin-left: -960px; margin-top: -540px; }
+        #main_logo { width: 200px; height: 100px; position: fixed; left: 20px; display: none; z-index: 9999;}
+        #main_box1 { width: 650px; height: 1080px; background-color: rgba(0, 0, 0, 0.164); position: absolute; right: -650px;  }
+        #main_icon { width: 70px; height: 40px; position: fixed; right: 140px; top: 40px; cursor: pointer; display: none; z-index: 9999;}
+        #main_icon>li { width: 65px; height: 2px; border-radius: 1px; background-color: #fff; margin:10px 0; }
+        #main_icon>li:last-child { width: 40px; height: 2px; margin-left: 23px; }
+        #main_icon:hover li:first-child { width: 35px; transition: 0.5s;}
+        #main_text { width: 393px; height: 389px; position: absolute; top: 220px; right: -650px;}
+        #main_text>h2 { color: #eee; font-family: 'Edu TAS Beginner', cursive; text-align: right; font-size: 100px; padding-right: 20px; line-height: 160px; font-weight: 200;}
+        #main_text>h2:hover { background: linear-gradient(to right ,#7A6CCF ,#fff,#C5C5E6); -webkit-background-clip: text; color: transparent; }
+        #sns { width: 200px; height: 50px; position: absolute; bottom: 230px; right: -1200px; left: 0; margin: auto; color: #eee; }
+        #sns>li {width: 60px; height: 50px; display: inline-block; font-family: 'Inconsolata', monospace; text-align: center;}
+        #sns>li img { width: 35px; height: 35px; vertical-align: middle;}
+        #scroll { color: #fff; font-size: 100px; position: fixed; left: 0; top: 0; z-index: 99999;}
+        #sc { width: 40px; height: 45px; position: absolute; bottom: 110px; right: 0; left: 0; margin: auto;display: none; text-align: center; }
+        #sc>img { width: 35px; height: 45px; }
+        #sc_text { width: 40px; height: 20px; color: #fff; position: absolute; right: 0; left: 0; bottom: 73px; margin: auto; display: none; font-family: 'Timmana', sans-serif; }
+       
+        /* menu */
+    
+        #menu { width: 1920px; height: 1000px; position: fixed; left: 50%; top: -1000px; margin-left: -960px;  color: #fff; z-index: 9999;}
+        #menu_logo { width: 200px; height: 100px; position: absolute; left: 20px; top: 0px;  z-index: 99;}
+        #menu_box1 { width: 640px; height: 1000px; text-align: center; border: 1px solid #eee; box-sizing: border-box; position: absolute; left: 0; overflow: hidden;}
+        #menu_box2 { width: 640px; height: 1000px; text-align: center; border: 1px solid #eee; box-sizing: border-box; position: absolute; left: 640px; overflow: hidden;}  
+        #menu_box3 { width: 640px; height: 1000px; text-align: center; border: 1px solid #eee; box-sizing: border-box; position: absolute; left: 1280px; overflow: hidden;}
+        #menu_box1>p { width: 100%; height: 79px; position: absolute; top: 50%; font-size: 60px; font-family: 'Lobster', cursive; margin-top: 200px;}
+        #menu_box1:hover p { color: #7a6ccf; transition: 0.5s;}
+        #menu_box2>p { width: 100%; height: 79px; position: absolute; top: 50%; font-size: 60px; font-family: 'Lobster', cursive; margin-top: 200px;}
+        #menu_box2:hover p { color: #7a6ccf; transition: 0.5s;}
+        #menu_box3>p { width: 100%; height: 79px; position: absolute; top: 50%; font-size: 60px; font-family: 'Lobster', cursive; color: #000; margin-top: 200px;}
+        #menu_box3:hover p { color: #7a6ccf; transition: 0.5s;}
+        #menu>div>img:nth-child(2) { opacity: 1; transition: 0.5s;}
+        #menu>div:hover img:nth-child(2) { opacity: 0; }
+        .menu_bg1 { width: 100%; position: absolute; left: 0; cursor: pointer;}
+        .menu_bg2 { width: 100%; position: absolute; left: 0; cursor: pointer;}
+        .menu_bg3 { width: 100%; position: absolute; left: 0; cursor: pointer;}
+        #close_icon { width: 70px; height: 40px; position: absolute; top: 40px; right: 140px; cursor: pointer; }
+        #close_icon>li { width: 65px; height: 2px; border-radius: 1px; background-color: #000; margin:10px 0; }
+        #close_icon>li:first-child { width: 40px; height: 2px; margin-left: 23px; }
+        #close_icon:hover li:last-child { width: 40px; transition: 0.5s; }
+        
+        /* sub */
+        
+        #sub_wrap { width: 100%; height: 100%; background-color: #000; position: relative; overflow: hidden;}
+        #sub_box1 { width: 40%; height: 50%; position: absolute; right: -40%; top: 0; background: url(img/subimg1.jpg) center no-repeat; background-size: cover;}
+        #sub_box2 { width: 40%; height: 50%; position: absolute; left: -40%; top: 0; background: url(img/subimg3.jpg) center no-repeat; background-size: cover;}
+        #sub_box3 { width: 40%; height: 50%; position: absolute; right: -40%; bottom: 0; background: url(img/subimg2.jpg) center no-repeat; background-size: cover;}
+        #sub_box4 { width: 40%; height: 50%; position: absolute; left: -40%; bottom: 0; background: url(img/subimg4.jpg) center no-repeat; background-size: cover;}
+        #sub_slide { width: 1146px; height: 766px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; overflow: hidden;}
+        #slide { width: 11460px; height: 100%; opacity: 0;  position: absolute;}
+        #slide>li { width: 1146px; height: 100%; float: left; }
+        #slide>li img { width: 100%; background-size: cover; }
+        #next_bt { width: 70px; height: 70px; position: absolute; right: 0; top: 0; bottom: 0; margin: auto; opacity: 0;  cursor: pointer;}
+        #prev_bt { width: 70px; height: 70px; position: absolute; left: 0; top: 0; bottom: 0; margin: auto; transform: rotate(180deg); opacity: 0; cursor: pointer;}
+        #slide_won { width: 250px; height: 30px; position: absolute; bottom: 30px; right: 0; left: 0; margin: auto; opacity: 0;}
+        #slide_won>li { width: 15px; height: 15px; border-radius: 15px; background-color: #fff; float: left; margin:0 5px; margin-top: 7px; cursor: pointer;}
+        #slide_won>li:first-child {  background-color: #000; }
+        
+        /*  */
+
+        #runway_wrap { width: 100%; height: 1000px; position: relative; overflow: hidden;}
+        #runway_vd { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; margin-left: -960px; margin-top: -540px; }
+        #runway_box { width: 30%; height: 1080px; background-color: rgba(0, 0, 0, 0.652); position: absolute; left: 0; top: 0px; transform-origin: 0% 0%; transform: rotate(90deg); transition: 1.5s; }
+        #runway_box2 { width: 38%; height: 1080px; background-color: rgba(0, 0, 0, 0.652); position: absolute; right: 0; top: 0; transform-origin: 100% 0%; transform: rotate(-90deg); transition: 1.5s; }
+        #runway_text { width: 23%; height: 650px; position: absolute; left: 70px; top: -120px; bottom: 0; margin: auto; display: none;}
+        #runway_text>h2 { margin-top: 30px; margin-left: 20px; font-size: 90px; background: linear-gradient(to right ,#7A6CCF ,#fff,#C5C5E6); -webkit-background-clip: text; color: transparent;}
+        #runway_text1 { width: 23%; height: 550px; position: absolute; left: 240px; bottom: 250px; display: none;}
+        #runway_text1>h2 {  margin-left: 20px; font-size: 90px; background: linear-gradient(to right ,#7A6CCF ,#fff,#C5C5E6); -webkit-background-clip: text; color: transparent;}
+        #runway_text2 { width: 80%; height: 700px; position: absolute; right: 0; top: -20px; bottom: 0; margin: auto; text-align: right; display: none;}
+        #runway_text2>h2 { font-size: 100px; color: #fff; margin-right: 100px; background: linear-gradient(to right ,#7A6CCF ,#fff,#C5C5E6); -webkit-background-clip: text; color: transparent;
+        line-height: 140px;}
+        #runway_bt { width: 100px; height: 50px; position: absolute; right: 0; left: -80px; bottom: 20px; margin: auto; display: none; cursor: pointer;}
+        #runway_left_icon { transform: rotate(180deg); position: absolute; left: 20px; top: 0;}
+        #runway_right_icon { position: absolute; right: 20px; top: 0;}
+
+    </style>
+    <style>
+        @media all and (min-width:320px){  /* 320~767 모바일 */
+            
+         }
+        @media all and (min-width:768px){ /* 768~1023 태블릿*/  
+
+        }
+        @media all and (min-width:1024px){ /* 1024~1599 노트북*/
+
+         }
+        @media all and (min-width:1600px){ /* 1600이상 pc*/
+
+         }
+    </style>
+</head>
+<body>
+    <!--  main     -->
+    
+    <div id="main_wrap">
+        <h1 id="scroll">0</h1>
+        <video src="img/D-antidote X Lisa l 디앤티도트 브랜드필름 l fashionfilm_1.mp4" id="main_vd" autoplay muted loop></video>
+        <img src="img/logo.png" alt="" id="main_logo">
+        <div id="main_box1">
+            <ul id="main_icon">
+                <li></li>
+                <li></li>
+            </ul>
+            <div id="main_text"><h2>High<br>Street<br>Fashion</h2></div>
+            <ul id="sns">
+                <li><a href="https://www.youtube.com/c/DANTIDOTEMAKERS" target="_blank"><img src="img/yt1.png" alt=""></a></li>
+                <li><a href="https://www.facebook.com/dantidotepage" target="_blank"><img src="img/fb2.png" alt=""></a></li>
+                <li><a href="https://www.instagram.com/d_antidote/" target="_blank"><img src="img/ig3.png" alt=""></a></li>
+            </ul>
+        </div>
+        <div id="sc">
+            <img src="img/sc.png" alt="">
+        </div>
+        <div id="sc_text">
+            <h4>scroll</h4>
+        </div>
+    </div>
+    <!--         menu        -->
+
+        <div id="menu">
+            <img src="img/logobk.png" alt="" id="menu_logo">
+            <div id="menu_box1">
+                <img src="img/menu1.jpg" alt="" class="menu_bg1">
+                <img src="img/menu4.jpg" alt="" class="menu_bg1">
+                <p><a href="">Online Shop</a></p>
+            </div>
+            <div id="menu_box2">
+                <img src="img/menu2.jpg" alt="" class="menu_bg2">
+                <img src="img/menu5.jpg" alt="" class="menu_bg2">
+                <p><a href="">Look Book</a></p>
+            </div>
+            <div id="menu_box3">
+                <img src="img/menu3.jpg" alt="" class="menu_bg3">
+                <img src="img/menu6.jpg" alt="" class="menu_bg3">
+                <p><a href="">About Me</a></p>
+            </div>
+            <ul id="close_icon">
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- sub1 -->
+        <div id="sub_wrap">
+            <div id="sub_box1"></div>
+            <div id="sub_box2"></div>
+            <div id="sub_box3"></div>
+            <div id="sub_box4"></div>
+            <div id="sub_slide">
+                <ul id="slide">
+                    <li><img src="img/subslide1.jpg" alt=""></li>
+                    <li><img src="img/subslide2.jpg" alt=""></li>
+                    <li><img src="img/subslide3.jpg" alt=""></li>
+                    <li><img src="img/subslide4.jpg" alt=""></li>
+                    <li><img src="img/subslide5.jpg" alt=""></li>
+                    <li><img src="img/subslide6.jpg" alt=""></li>
+                    <li><img src="img/subslide7.jpg" alt=""></li>
+                    <li><img src="img/subslide8.jpg" alt=""></li>
+                    <li><img src="img/subslide9.jpg" alt=""></li>
+                    <li><img src="img/subslide10.jpg" alt=""></li>
+                </ul>
+                <ul id="slide_won">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div id="next_bt"><img src="img/next1.png" alt=""></div>
+                <div id="prev_bt"><img src="img/next1.png" alt=""></div>
+            </div>
+        </div>
+
+        <!--  runway -->
+
+        <div id="runway_wrap">
+            <video src="img/runwaycut.mp4" id="runway_vd" autoplay muted loop></video>
+            <div id="runway_box">
+                <div id="runway_text">
+                    <h2>R <br><br> U <br><br> N</h2>
+                </div>
+                <div id="runway_text1">
+                    <h2>W <br><br> A <br><br> Y</h2>
+                </div>
+                
+            </div>
+            <div id="runway_box2">
+                <div id="runway_text2">
+                    <h2>2020 <br>
+                        S/S <br>
+                        Seoul <br>
+                        Fashion <br>
+                        Week</h2>
+                </div>
+            </div>
+            <div id="runway_bt">
+                <img src="img/right_icon.png" alt="" id="runway_left_icon">
+                <img src="img/right_icon.png" alt="" id="runway_right_icon">
+            </div>
+        </div>
+
+</body>
+</html>
